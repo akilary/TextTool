@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from .config import MENU_CONFIG
+from .config import Cfg
 
 
 class TextTool(tk.Tk):
@@ -13,18 +13,22 @@ class TextTool(tk.Tk):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
 
+        self.cfg = Cfg()
+
         self._create_menubar()
-        tk.Text(font=("Arial", 12)).grid(row=0, column=0, sticky=tk.NSEW)
+        self.editor = tk.Text(font=("Arial", 12), undo=True)
+        self.editor.grid(row=0, column=0, sticky=tk.NSEW)
         self._create_statusbar()
 
     def _create_menubar(self) -> None:
         """Создаёт меню-бар"""
         main_menu = tk.Menu(self)
 
-        for menu_name, items in MENU_CONFIG.items():
+        for menu_name, items in self.cfg.menu_config.items():
             menu = tk.Menu(main_menu, tearoff=False)
             for item in items:
-                menu.add_command(label=item["label"])
+                command_func = self.cfg.command_registry[item["command"]]
+                menu.add_command(label=item["label"], command=lambda func=command_func: func(self))
             main_menu.add_cascade(label=menu_name, menu=menu)
 
         self.config(menu=main_menu)
@@ -35,14 +39,14 @@ class TextTool(tk.Tk):
         frame.grid(row=1, column=0, sticky=tk.EW)
 
         statusbar_text = [
-            "Общее количество символов: 170",
-            "Количество букв: 141",
-            "Количество слов: 12",
-            "Количество предложений: 6",
-            "Средняя длина слова: 7",
-            "Палиндром: Нет",
-            "Количество гласных: 35",
-            "Количество согласных: 22"
+            "Общее количество символов: ",
+            "Количество букв: ",
+            "Количество слов: ",
+            "Количество предложений: ",
+            "Средняя длина слова: ",
+            "Палиндром: ",
+            "Количество гласных: ",
+            "Количество согласных: "
         ]
 
         columns_per_row = 4
