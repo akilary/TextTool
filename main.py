@@ -1,5 +1,5 @@
-from app import TextTool
+from app import create_app
 
 if __name__ == "__main__":
-    text_tool = TextTool()
-    text_tool.mainloop()
+    app = create_app()
+    app.mainloop()
