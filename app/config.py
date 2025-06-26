@@ -21,11 +21,10 @@ class Cfg:
             {"label": "Отмена", "command": "undo_text"},
         ],
         "Обработка текста": [
-            {"label": "Удалить пустые строки", "command": "remove_empty_lines"},
-            {"label": "Удалить лишние пробелы", "command": "remove_extra_spaces"},
-            {"label": "Начать с заглавной буквы", "command": "start_capital_letter"},
             {"label": "Верхний регистр", "command": "to_uppercase"},
             {"label": "Нижний регистр", "command": "to_lowercase"},
+            {"label": "Удалить пустые строки", "command": "remove_empty_lines"},
+            {"label": "Удалить лишние пробелы", "command": "remove_extra_spaces"},
             {"label": "Очистить HTML", "command": "clean_html"},
             {"label": "Регулярные выражения (открывает отдельное окно)", "command": None},
         ],

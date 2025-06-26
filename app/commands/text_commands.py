@@ -2,9 +2,6 @@ import re
 from html import unescape
 
 from .utils import get_editor_text, set_editor_text
-from ..nlp import get_custom_tokenizer
-
-tokenizer = get_custom_tokenizer()
 
 
 def remove_empty_lines(r) -> None:
@@ -19,14 +16,6 @@ def remove_extra_spaces(r) -> None:
     text = get_editor_text(r)
     formated_text = re.sub(r" +", " ", text)
     formated_text = re.sub(r"^ +| +$", "", formated_text, flags=re.MULTILINE)
-    set_editor_text(r, formated_text)
-
-
-def start_capital_letter(r) -> None:
-    """Начинает каждое предложение с заглавной буквы"""
-    text = get_editor_text(r)
-    sentences = tokenizer.tokenize(text)
-    formated_text = " ".join(sentence.strip().capitalize() for sentence in sentences)
     set_editor_text(r, formated_text)
 
 
