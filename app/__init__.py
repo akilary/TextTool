@@ -1,7 +1,7 @@
-from .gui import TextTool
+from .gui import MainApp
 
 
-def create_app() -> TextTool:
+def create_app() -> MainApp:
     """Создание приложение"""
-    app = TextTool()
+    app = MainApp()
     return app

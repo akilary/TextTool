@@ -6,6 +6,10 @@ from . import commands
 class Cfg:
     SCREEN_WIDTH = 800
     SCREEN_HEIGHT = 600
+
+    MODAL_WIDTH = 360
+    MODAL_HEIGHT = 200
+
     FONT_NAME = "Arial"
 
     MENU_CONFIG = {
@@ -26,7 +30,7 @@ class Cfg:
             {"label": "Удалить пустые строки", "command": "remove_empty_lines"},
             {"label": "Удалить лишние пробелы", "command": "remove_extra_spaces"},
             {"label": "Очистить HTML", "command": "clean_html"},
-            {"label": "Регулярные выражения (открывает отдельное окно)", "command": None},
+            {"label": "Регулярные выражения (открывает отдельное окно)", "command": "regex"},
         ],
         "Анализ": [
             {"label": "Проверка орфографии", "command": None}

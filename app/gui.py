@@ -4,7 +4,7 @@ from .config import Cfg
 from .widgets import create_menubar, create_statusbar
 
 
-class TextTool(tk.Tk):
+class MainApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
